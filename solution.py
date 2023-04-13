@@ -13,13 +13,8 @@ def solution(x_success: int,
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    alpha = 0.02
+    alpha = 0.05
     successes = np.array([x_success, y_success])
     trials = np.array([x_cnt, y_cnt])
-    stat, pval = proportions_ztest(successes, trials, alpha)
-    if pval < alpha:
-      a = False
-    else:
-      a = True
- 
-    return a # Ваш ответ, True или False
+    stat, pval = proportions_ztest(successes, trials, alternative='smaller')
+    return pval < alpha # Ваш ответ, True или False
